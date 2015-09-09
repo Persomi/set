@@ -9,6 +9,7 @@ package set
 type Interface interface {
 	New(items ...interface{}) Interface
 	Add(items ...interface{})
+	AddOne(item interface{}) bool
 	Remove(items ...interface{})
 	Pop() interface{}
 	Has(items ...interface{}) bool
