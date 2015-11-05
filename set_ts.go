@@ -36,6 +36,20 @@ func (s *Set) Add(items ...interface{}) {
 	}
 }
 
+// AddOne includes the specified item in the set. The underlying Set s is
+// modified. Returns true if item was added (was not in set already), else
+// false.
+func (s *Set) AddOne(item interface{}) bool {
+	s.l.Lock()
+	defer s.l.Unlock()
+
+	if _, ok := s.m[item]; ok {
+		return false
+	}
+	s.m[item] = keyExists
+	return true
+}
+
 // Remove deletes the specified items from the set.  The underlying Set s is
 // modified. If passed nothing it silently returns.
 func (s *Set) Remove(items ...interface{}) {

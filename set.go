@@ -26,6 +26,7 @@ func (s SetType) String() string {
 // Interface is describing a Set. Sets are an unordered, unique list of values.
 type Interface interface {
 	Add(items ...interface{})
+	AddOne(item interface{}) bool
 	Remove(items ...interface{})
 	Pop() interface{}
 	Has(items ...interface{}) bool
